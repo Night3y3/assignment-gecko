@@ -36,7 +36,14 @@ const fetchAndStoreCryptoData = async () => {
     await Coin.insertMany(coinData);
     console.log("Cryptocurrency data fetched and stored successfully.");
   } catch (error) {
-    console.error("Error fetching cryptocurrency data:", error);
+    if (axios.isAxiosError(error)) {
+      console.error(
+        "Error fetching cryptocurrency data:",
+        error.response?.data
+      );
+    } else {
+      console.error("Unexpected error:", error);
+    }
   }
 };
 
