@@ -10,7 +10,6 @@ export const getDeviation = async (req: Request, res: Response) => {
       .select("price")
       .exec();
     const prices: number[] = coinPrices.map((coinPrice) => coinPrice.price);
-    console.log(prices);
 
     const std: math.MathNumericType[] = math.std(prices);
 
