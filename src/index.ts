@@ -1,9 +1,11 @@
 import express from "express";
 import dbConnect from "./db";
 import router from "./route";
+import cors from "cors";
 import "./lib/cronJob";
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(router);
 
